@@ -6,10 +6,10 @@ earth = 5.972e24; %mass of earth (kg)
 sun = 1.989e30; %mass of sun (kg)
 G = 6.67408e-11; %universal gravitational constant (m/kg*s^2)
 
-r0 = 150e9; %initial radius of earth orbit 'distance from sun center to earth center' (m)
+r0 = 147.1e9; %initial radius of earth orbit 'distance from sun center to earth center' (m)
 rtheta0 = pi/2; %initial theta of earth radius (rad) (only matters in relation to initial theta of velocity)
-v0 = 20e3; %initial velocity of earth 'average earth velocity' (m/s)
-vtheta0 = pi/6; %initial theta of velocity (rad) (only matters in relation to initial theta of earth radius)
+v0 = 30.3e3; %initial velocity of earth 'average earth velocity' (m/s)
+vtheta0 = 0; %initial theta of velocity (rad) (only matters in relation to initial theta of earth radius)
 z0 = v0*(cos(vtheta0) + i*sin(vtheta0)); %velocity represented as a complex number (r*cos(theta) + i*sin(theta))
 
 initials = [r0, rtheta0, z0]; %packs initial values into vector for ode45
@@ -41,7 +41,7 @@ opts = odeset('RelTol',1e-7,'AbsTol',1e-7); %sets relative tolerance and absolut
 
 R = M(:,1);
 Theta = M(:,2);
-% V = M(:,3);
+V = M(:,3);
 polar(Theta,R,'rx');
 % X = R.*cos(Theta);
 % Y = R.*sin(Theta);
@@ -49,10 +49,11 @@ polar(Theta,R,'rx');
 
 % disp(R);
 % disp(V);
-% disp(abs(V));
-
-disp(R(end));
+% disp(abs(V(100)));
+% 
+% disp(R(100));
 disp(Theta(end));
+fprintf('%8.2f %8.3f\n', [abs(V), R]');
 
 title(['Orbital positions for ', num2str(years), ' year(s)', ' Initial Velocity = ', num2str(v0), ' m/s Initial V Theta = ', num2str(vtheta0)]);
 
