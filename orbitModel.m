@@ -4,7 +4,7 @@ close all
 
 earth = 5.972e24; %mass of earth (kg)
 sun = 1.989e30; %mass of sun (kg)
-G = 6.67408e-11; %universal gravitational constant (m/kg*s^2)
+G = 6.67408e-11; %universal gravitational constant (m^3/kg*s^2)
 
 r0 = 147.1e9; %initial radius of earth orbit 'distance from sun center to earth center' (m)
 rtheta0 = pi/2; %initial theta of earth radius (rad) (only matters in relation to initial theta of velocity)
