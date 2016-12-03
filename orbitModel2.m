@@ -1,6 +1,8 @@
 function orbitModel2()
 
-numYears = 3; %number of years to run simulation
+close all
+
+numYears = 10; %number of years to run simulation
 year = 365 * 24 * 60 * 60; % year in seconds
 r = 147.1e9; % initial distance in meters at perihelion
 v = 30.3e3; % initial velocity in meters per second at perihelion
@@ -34,6 +36,11 @@ animate_func(T,M);
         VY1 = M(:,6);
         VX2 = M(:,7);
         VY2 = M(:,8);
+        
+        plot(X1,Y1,'rx');
+        figure
+        plot(X2,Y2,'bx');
+        figure
         
         R1 = sqrt(X1.^2 + Y1.^2);
         R2 = sqrt(X2.^2 + Y2.^2);
