@@ -2,7 +2,7 @@ function orbitModel2()
 
 close all
 
-numYears = 10; %number of years to run simulation
+numYears = 1; %number of years to run simulation
 year = 365 * 24 * 60 * 60; % year in seconds
 r = 147.1e9; % initial distance in meters at perihelion
 v = 30.3e3; % initial velocity in meters per second at perihelion
@@ -23,7 +23,7 @@ options = odeset('RelTol', 1e-5);
 
 [T, M] = ode45(@rate_func, [t0 tfinal], [P1; P2; V1; V2], options);
 
-% animate_func(T,M);
+animate_func(T,M);
 
 
 
@@ -37,10 +37,10 @@ options = odeset('RelTol', 1e-5);
         VX2 = M(:,7);
         VY2 = M(:,8);
         
-%         plot(X1,Y1,'rx');
-%         figure
-%         plot(X2,Y2,'bx');
-%         figure
+        plot(X1,Y1,'rx');
+        figure
+        plot(X2,Y2,'bx');
+        figure
         
         R1 = sqrt(X1.^2 + Y1.^2);
         R2 = sqrt(X2.^2 + Y2.^2);
@@ -106,18 +106,18 @@ options = odeset('RelTol', 1e-5);
         
     end
 
-%     X1p = M(:,1);
-%     Y1p = M(:,2);
-    X2p = M(:,3);
-    Y2p = M(:,4);
-hold on
-minmax1 = [-10e11, 10e11, -10e11, 10e11];
-axis(minmax1);
-plot(X2p,Y2p,'b-');
-plot(0,0,'r.', 'MarkerSize', 20);
-plot(X2p(end),Y2p(end),'b.', 'MarkerSize', 10);
-xlabel('X Position (m)');
-ylabel('Y Position (m)');
+% %     X1p = M(:,1);
+% %     Y1p = M(:,2);
+%     X2p = M(:,3);
+%     Y2p = M(:,4);
+% hold on
+% minmax1 = [-10e11, 10e11, -10e11, 10e11];
+% axis(minmax1);
+% plot(X2p,Y2p,'b-');
+% plot(0,0,'r.', 'MarkerSize', 20);
+% plot(X2p(end),Y2p(end),'b.', 'MarkerSize', 10);
+% xlabel('X Position (m)');
+% ylabel('Y Position (m)');
 
 
 end
