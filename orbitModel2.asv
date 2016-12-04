@@ -2,10 +2,10 @@ function orbitModel2()
 
 close all
 
-numYears = 10; %number of years to run simulation
+numYears = 3; %number of years to run simulation
 year = 365 * 24 * 60 * 60; % year in seconds
 r = 147.1e9; % initial distance in meters at perihelion
-v = 30.3e3; % initial velocity in meters per second at perihelion
+v = 43.3e3; % initial velocity in meters per second at perihelion
 sun = 1.989e30; % mass of the sun (kg)
 earth = 5.972e24; % mass of earth (kg)
 G = 6.67408e-11; % gravitation constant in N m^2 / kg^2
@@ -111,13 +111,11 @@ options = odeset('RelTol', 1e-5);
     X2p = M(:,3);
     Y2p = M(:,4);
 hold on
-minmax1 = [-10e11, 10e11, -10e11, 10e11];
+minmax1 = [10e11, 10e11, 10e11, 10e11];
 axis(minmax1);
 plot(X2p,Y2p,'b-');
-plot(0,0,'r.', 'MarkerSize', 20);
-plot(X2p(end),Y2p(end),'b.', 'MarkerSize', 10);
-xlabel('X Position (m)');
-ylabel('Y Position (m)');
+plot(0,0,'r.', 'MarkerSize', 200);
+plot(X2p(end),Y2p(end),'b.', 'MarkerSize', 20);
 
 
 end
