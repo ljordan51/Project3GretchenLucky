@@ -55,16 +55,32 @@ title('Earth Velocity After Inelastic Collision Given Comet Velocity and Mass')
 % text(meteorMs(26),meteorVs(n-50),'Upper velocity is equal to that of the fastest comet recorded', 'Color', 'white', 'FontSize', 15)
 % text(meteorMs(26),meteorVs(n-100),'Lower velocity is equal to the escape velocity of the Earth from the Sun', 'Color', 'white', 'FontSize', 15)
 hold on
-plot([earthM/10 earthM/10],[0 meteorVs(50)],'w-','LineWidth', 2);
-text(earthM/10,meteorVs(60),'0.1 x Earth Mass', 'Color', 'white', 'FontSize', 15)
-plot([earthM/2 earthM/2],[0 meteorVs(50)],'w-','LineWidth', 2);
-text(earthM/2,meteorVs(60),'0.5 x Earth Mass', 'Color', 'white', 'FontSize', 15)
-plot([earthM earthM],[0 meteorVs(50)],'w-','LineWidth', 2);
-text(earthM,meteorVs(60),'1 x Earth Mass', 'Color', 'white', 'FontSize', 15)
-plot([earthM*2 earthM*2],[0 meteorVs(50)],'w-','LineWidth', 2);
-text(earthM*2,meteorVs(60),'2 x Earth Mass', 'Color', 'white', 'FontSize', 15)
+plot([earthM/10 earthM/10],[0 meteorVs(75)],'w-','LineWidth', 2);
+text(earthM/10,meteorVs(85),'0.1 x Earth Mass', 'Color', 'white', 'FontSize', 15)
+plot([earthM/2 earthM/2],[0 meteorVs(75)],'w-','LineWidth', 2);
+text(earthM/2,meteorVs(85),'0.5 x Earth Mass', 'Color', 'white', 'FontSize', 15)
+plot([earthM earthM],[0 meteorVs(75)],'w-','LineWidth', 2);
+text(earthM,meteorVs(85),'1 x Earth Mass', 'Color', 'white', 'FontSize', 15)
+plot([earthM*2 earthM*2],[0 meteorVs(75)],'w-','LineWidth', 2);
+text(earthM*2,meteorVs(85),'2 x Earth Mass', 'Color', 'white', 'FontSize', 15)
 
 legend('Earth Breaks Orbit');
+s = sqrt(602^2+602^2);
+
+for i = 1:n
+    for j = 1:n
+        this = E(i,j);
+        if this == 1
+            h = sqrt(i^2+j^2);
+            if h < s
+                velocityIndex = i;
+                massIndex = j;
+                s=h;
+            end
+            break
+        end
+    end
+end
 
 % h = 2e25;
 % 
@@ -80,7 +96,9 @@ legend('Earth Breaks Orbit');
 % end
 % 
 % disp(h);
-% disp(velocityIndex);
-% disp(massIndex);
-% disp(meteorVs(velocityIndex));
-% disp(meteorMs(massIndex));
+disp(velocityIndex);
+disp(massIndex);
+disp(meteorVs(velocityIndex));
+disp(meteorMs(massIndex));
+hold on
+plot(meteorMs(massIndex),meteorVs(velocityIndex),'r.', 'MarkerSiz', 20);
