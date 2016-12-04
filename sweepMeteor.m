@@ -14,6 +14,7 @@ meteorMstep = (meteorMbig - meteorMsmall)/(n-1);
 numM = n;
 numV = n;
 Z = zeros(numV,numM);
+D = zeros(numV,numM);
 l = 1;
 k = 1;
 
@@ -33,6 +34,7 @@ for i = 1:n
     for j = 1:n
         this = Z(i,j);
         if this >= 42484
+%             D(i,j) = sqrt((meteorVs(i)-meteorVsmall)^2 + (meteorMs(j)-meteorMsmall)^2);
             E(i,j) = 1;
         else
             E(i,j) = 0;
@@ -63,3 +65,22 @@ plot([earthM*2 earthM*2],[0 meteorVs(50)],'w-','LineWidth', 2);
 text(earthM*2,meteorVs(60),'2 x Earth Mass', 'Color', 'white', 'FontSize', 15)
 
 legend('Earth Breaks Orbit');
+
+% h = 2e25;
+% 
+% for i = 1:n
+%     for j = 1:n
+%         this = D(i,j);
+%         if this < h && this > 0
+%             h = this;
+%             velocityIndex = i;
+%             massIndex = j;
+%         end
+%     end
+% end
+% 
+% disp(h);
+% disp(velocityIndex);
+% disp(massIndex);
+% disp(meteorVs(velocityIndex));
+% disp(meteorMs(massIndex));
