@@ -37,16 +37,16 @@ animate_func(T,M);
         VX2 = M(:,7);
         VY2 = M(:,8);
         
-        plot(X1,Y1,'rx');
-        figure
-        plot(X2,Y2,'bx');
-        figure
+%         plot(X1,Y1,'rx');
+%         figure
+%         plot(X2,Y2,'bx');
+%         figure
         
-        R1 = sqrt(X1.^2 + Y1.^2);
-        R2 = sqrt(X2.^2 + Y2.^2);
-        V1a = sqrt(VX1.^2 + VY1.^2);
-        V2a = sqrt(VX2.^2 + VY2.^2);
-        fprintf('%8.2f %8.3f %8.4f %8.5f\n', [R1, V1a, R2, V2a]');
+%         R1 = sqrt(X1.^2 + Y1.^2);
+%         R2 = sqrt(X2.^2 + Y2.^2);
+%         V1a = sqrt(VX1.^2 + VY1.^2);
+%         V2a = sqrt(VX2.^2 + VY2.^2);
+%         fprintf('%8.2f %8.3f %8.4f %8.5f\n', [R1, V1a, R2, V2a]');
 %         fprintf('%8.2f %8.3f\n', [R2, V2a]');
         
         minmax = [min([X1;X2]), max([X1;X2]), min([Y1;Y2]), max([Y1;Y2])];
@@ -83,6 +83,10 @@ animate_func(T,M);
         dVdt = acceleration_func(P);
 
         res = [dRdt; dVdt];
+%         if q < 50
+%             disp(dVdt);
+%             q = q +1;
+%         end
 
     end
 
@@ -103,6 +107,17 @@ animate_func(T,M);
         r1 = norm(R);
         Rhat = R/r1;
         Fg = ((G * sun * earth) / r1^2) * Rhat;
+        
+%         disp(Rhat');
+%         if b < 50
+%             disp('Fg');
+%             disp(Fg');
+%             disp('r1');
+%             disp(r1');
+%             disp('rhat');
+%             disp(Rhat');
+%             b = b+1;
+%         end
         
     end
 
